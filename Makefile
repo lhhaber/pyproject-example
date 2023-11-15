@@ -26,7 +26,6 @@ dist: setup-venv ${VENV}
 clean:
 	find . -xdev -depth -mindepth 1 -name "__pycache__" -exec rm -rf {} \;
 	find . -xdev -depth -mindepth 1 -name "*.egg-info" -exec rm -rf {} \;
-	rm -rf .mypy_cache
-	rm -rf dist
+	rm -rf .mypy_cache dist build
 
 .PHONY: setup-venv install install-dev test format lint clean
