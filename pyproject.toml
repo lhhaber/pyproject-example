@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "example"
 authors = [
-  {name = "", email = ""}
+  {name = "user", email = "user@example.com"}
 ]
 description = "example pyproject package"
 readme = "README.md"
@@ -38,20 +38,17 @@ dev = [
 [project.scripts]
 example = "example.__main__:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.pytest.ini_options]
-pythonpath = ["src"]
+[tool.setuptools.packages]
+find = {}
 
 [tool.black]
 line-length = 88
-include = "(src/|tests/).*"
+include = "(example/|tests/).*"
 extend-exclude = "artifacts/*"
 
 [tool.isort]
 profile = "black"
-src_paths = ["src/example", "tests/"]
+src_paths = ["example/", "tests/"]
 
 [tool.mypy]
 exclude = ["artifacts/*"]
