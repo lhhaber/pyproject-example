@@ -1,0 +1,57 @@
+# Refer to https://setuptools.pypa.io/en/stable/userguide/quickstart.html
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "example"
+authors = [
+  {name = "", email = ""}
+]
+description = "example pyproject package"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT License"}
+version = "1.0.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: Linux",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "isort",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/"
+"Bug Tracker" = "https://github.com/issues"
+
+[project.scripts]
+example = "example.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.black]
+line-length = 88
+include = "(src/|tests/).*"
+extend-exclude = "artifacts/*"
+
+[tool.isort]
+profile = "black"
+src_paths = ["src/example", "tests/"]
+
+[tool.mypy]
+exclude = ["artifacts/*"]
